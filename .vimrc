@@ -11,12 +11,20 @@ nnoremap ZQ :wq!<CR>
 vnoremap ; <Esc>
 nnoremap <C-s> :w!<CR>
 inoremap <C-s> <Esc>:w!<CR>
+nnoremap <C-o> o<Esc>k<CR>gv
+
+" Keymaps for NERDtree
+nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
 
 " Plugins (Statusline, Theme, motion)
 call plug#begin()
 Plug 'vim-airline/vim-airline'
 Plug 'ghifarit53/tokyonight-vim'
 Plug 'easymotion/vim-easymotion'
+Plug 'preservim/nerdtree'
 call plug#end()
 
 " Tokyonight Colorscheme
