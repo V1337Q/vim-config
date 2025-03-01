@@ -1,5 +1,6 @@
 " Start of Config
 " Config by Kai_Je0
+set number
 set relativenumber  
 
 " Keymaps for easy navigation
@@ -25,7 +26,10 @@ Plug 'vim-airline/vim-airline'
 Plug 'ghifarit53/tokyonight-vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'preservim/nerdtree'
+Plug 'prabirshrestha/vim-lsp'
 call plug#end()
+
+" Settings for Vim-Airline
 
 " Tokyonight Colorscheme
 set termguicolors
