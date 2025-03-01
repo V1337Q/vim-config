@@ -1,10 +1,9 @@
 # vim-config
-** This is my vim config file **
 
 ## Features:
 - Status line plugin
 - Custom keymaps (Will update daily for easy navigation)
-
+- Plugins (NerdTree, vim-airline, and more)
 ## How-to install:
 
 - Install Vim-plug
