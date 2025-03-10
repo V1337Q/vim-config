@@ -3,11 +3,17 @@
 set number
 set relativenumber  
 let mapleader = " "
+" set fillchars+=vert:\
+" set fillchars+=horiz:\
+" set fillchars+=vert:\ ,horiz:\
+set fillchars=fold:\
 
 " Keymaps for easy navigation
 inoremap jk <Esc>
-vnoremap J :m'>+1<CR>gv  
-vnoremap K :m'<-2<CR>gv  
+" vnoremap J :m'>+1<CR>gv  
+" vnoremap K :m'<-2<CR>gv  
+vnoremap <C-j> :m'>+1<CR>gv  
+vnoremap <C-k> :m'<-2<CR>gv  
 nnoremap QQ :qa!<CR>
 nnoremap ZQ :wq!<CR>
 vnoremap ; <Esc>
@@ -18,6 +24,8 @@ nnoremap <Leader>h :TerminalSplit bash<CR>
 nnoremap <C-d> <C-d>zz
 nnoremap <C-u> <C-u>zz
 nnoremap <leader>y "+y
+vnoremap J gj
+vnoremap K gk
 
 " Keymaps for NERDtree
 nnoremap <leader>n :NERDTreeFocus<CR>
@@ -65,6 +73,13 @@ function! ShowDocumentation()
   endif
 endfunction
 
+" Options for vim-airline 
+" let g:airline_section_x = ''  " Disable the z section
+" let g:airline_section_y = ''  " Disable the z section
+" let g:airline_section_z = ''  " Disable the z section
+" let g:airline#extensions#default#section_truncate_width = {}
+let g:airline#extensions#whitespace#enabled = 0
+
 " Settings for NERDtree
 let g:NERDTreeMinimalUI = 1
 let g:NERDTreeMinimalMenu = 1
@@ -79,6 +94,8 @@ nnoremap <Leader>h :TerminalSplit bash<CR>
 call plug#begin()
 Plug 'vim-airline/vim-airline'
 Plug 'ghifarit53/tokyonight-vim'
+" Plug 'catppuccin/vim'
+" Plug 'catppuccin/vim', { 'as': 'catppuccin' }
 Plug 'easymotion/vim-easymotion'
 Plug 'preservim/nerdtree'
 Plug 'prabirshrestha/vim-lsp'
@@ -96,5 +113,5 @@ set termguicolors
 
 let g:tokyonight_style = 'night' " available: night, storm
 let g:tokyonight_enable_italic = 0
-
+" let g:airline_theme = 'catppuccin_mocha'
 colorscheme tokyonight
