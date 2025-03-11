@@ -4,6 +4,7 @@
 - Status line plugin
 - Custom keymaps (Will update daily for easy navigation)
 - Plugins (NerdTree, vim-airline, and more)
+- LSP support.
 ## How-to install:
 
 - Install Vim-plug
