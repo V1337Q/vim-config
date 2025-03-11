@@ -73,6 +73,11 @@ function! ShowDocumentation()
   endif
 endfunction
 
+" Options for coc.Vim
+" let g:coc_global_extensions = ['coc-rls']
+let g:coc_global_extensions = ['coc-rust-analyzer']
+" let g:coc_global_extensions = ['coc-asm-lsp']
+
 " Options for vim-airline 
 " let g:airline_section_x = ''  " Disable the z section
 " let g:airline_section_y = ''  " Disable the z section
