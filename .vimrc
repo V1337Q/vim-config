@@ -74,6 +74,12 @@ function! ShowDocumentation()
 endfunction
 
 " Options for coc.Vim
+" Options for buftabline
+set hidden
+" nnoremap <C-N> :bnext<CR>
+" nnoremap <C-P> :bprev<CR>
+nnoremap n :bnext<CR>
+nnoremap N :bprev<CR>
 " let g:coc_global_extensions = ['coc-rls']
 let g:coc_global_extensions = ['coc-rust-analyzer']
 " let g:coc_global_extensions = ['coc-asm-lsp']
@@ -99,6 +105,7 @@ nnoremap <Leader>h :TerminalSplit bash<CR>
 call plug#begin()
 Plug 'vim-airline/vim-airline'
 Plug 'ghifarit53/tokyonight-vim'
+Plug 'mhinz/vim-startify'
 " Plug 'catppuccin/vim'
 " Plug 'catppuccin/vim', { 'as': 'catppuccin' }
 Plug 'easymotion/vim-easymotion'
@@ -109,6 +116,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-commentary'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'ap/vim-buftabline'
 call plug#end()
 
 " Settings for Vim-Airline
@@ -120,3 +128,17 @@ let g:tokyonight_style = 'night' " available: night, storm
 let g:tokyonight_enable_italic = 0
 " let g:airline_theme = 'catppuccin_mocha'
 colorscheme tokyonight
+
+let g:startify_custom_header = [
+      \ '   ⣴⣶⣤⡤⠦⣤⣀⣤⠆     ⣈⣭⣿⣶⣿⣦⣼⣆         ',
+      \ '    ⠉⠻⢿⣿⠿⣿⣿⣶⣦⠤⠄⡠⢾⣿⣿⡿⠋⠉⠉⠻⣿⣿⡛⣦       ',
+      \ '          ⠈⢿⣿⣟⠦ ⣾⣿⣿⣷    ⠻⠿⢿⣿⣧⣄     ',
+      \ '           ⣸⣿⣿⢧ ⢻⠻⣿⣿⣷⣄⣀⠄⠢⣀⡀⠈⠙⠿⠄    ',
+      \ '          ⢠⣿⣿⣿⠈    ⣻⣿⣿⣿⣿⣿⣿⣿⣛⣳⣤⣀⣀   ',
+      \ '   ⢠⣧⣶⣥⡤⢄ ⣸⣿⣿⠘  ⢀⣴⣿⣿⡿⠛⣿⣿⣧⠈⢿⠿⠟⠛⠻⠿⠄  ',
+      \ '  ⣰⣿⣿⠛⠻⣿⣿⡦⢹⣿⣷   ⢊⣿⣿⡏  ⢸⣿⣿⡇ ⢀⣠⣄⣾⠄   ',
+      \ ' ⣠⣿⠿⠛ ⢀⣿⣿⣷⠘⢿⣿⣦⡀ ⢸⢿⣿⣿⣄ ⣸⣿⣿⡇⣪⣿⡿⠿⣿⣷⡄  ',
+      \ ' ⠙⠃   ⣼⣿⡟  ⠈⠻⣿⣿⣦⣌⡇⠻⣿⣿⣷⣿⣿⣿ ⣿⣿⡇ ⠛⠻⢷⣄ ',
+      \ '      ⢻⣿⣿⣄   ⠈⠻⣿⣿⣿⣷⣿⣿⣿⣿⣿⡟ ⠫⢿⣿⡆     ',
+      \ '       ⠻⣿⣿⣿⣿⣶⣶⣾⣿⣿⣿⣿⣿⣿⣿⣿⡟⢀⣀⣤⣾⡿⠃     ',
+      \]
