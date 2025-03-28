@@ -1,5 +1,44 @@
 # vim-config
 
+## How-to install:
+
+- Install Vim-plug
+
+``` 
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+```
+- put the .vimrc file to your home directory, if don't exist. 
+
+```
+mv .vimrc ~/ 
+```
+- Put the vim files inside .vim into your .vim directory 
+
+```
+cd .vim ; mv *.vim ~/.vim 
+```
+- Enter Vim
+
+- Run the following command inside vim
+
+```
+:PlugInstall
+```
+- Source the vimscript
+```
+:source .vimscript
+```
+
+- Exit vim
+
+```
+:q
+```
+
+- Re-enter vim
+ 
+
 ## Features:
 - Status line plugin
 
@@ -22,26 +61,3 @@
 
 ![Alt text](./images/Preview3.png)
 
-## How-to install:
-
-- Install Vim-plug
-
-``` 
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-```
-
-- Run the following command inside vim
-
-```
-:PlugInstall
-```
-
-- Exit vim
-
-```
-:q
-```
-
-- Re-enter vim
- 
