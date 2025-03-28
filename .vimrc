@@ -1,5 +1,8 @@
 " Start of Config
 " Config by Kai_Je0
+source ~/.vim/keymaps.vim
+source ~/.vim/startify.vim
+source ~/.vim/vimtex.vim 
 set number
 set relativenumber  
 let mapleader = " "
@@ -7,6 +10,8 @@ let mapleader = " "
 " set fillchars+=horiz:\
 " set fillchars+=vert:\ ,horiz:\
 set fillchars=fold:\
+" set smartindent
+" let g:AutoPairsMapCh = 0
 
 " Keymaps for easy navigation
 inoremap jk <Esc>
@@ -26,6 +31,13 @@ nnoremap <C-u> <C-u>zz
 nnoremap <leader>y "+y
 vnoremap J gj
 vnoremap K gk
+
+" Easy shits
+" inoremap ( ()<Left>
+" inoremap [ []<Left>
+" inoremap { {}<Left>
+" inoremap " ""<Left>
+" inoremap ' ''<Left>
 
 " Keymaps for NERDtree
 nnoremap <leader>n :NERDTreeFocus<CR>
@@ -74,6 +86,12 @@ function! ShowDocumentation()
 endfunction
 
 " Options for coc.Vim
+let g:coc_disable_signs = 1
+" set signcolumn=yes:1
+" set signcolumn=no
+" highlight signcolumn guibg=NONE ctermbg=NONE
+" highlight SignColumn ctermbg=green
+"
 " Options for buftabline
 set hidden
 " nnoremap <C-N> :bnext<CR>
@@ -101,6 +119,11 @@ let g:coc_disable_startup_warning = 1
 " Keymaps for Vim-Terminal
 nnoremap <Leader>h :TerminalSplit bash<CR>
 
+" Settings for buftabline
+let g:buftabline_show = 0  " Disable buftabline
+let g:buftabline_separator = '|'
+let g:buftabline_arrow = '▶'
+
 " Plugins (Statusline, Theme, motion)
 call plug#begin()
 Plug 'vim-airline/vim-airline'
@@ -117,7 +140,14 @@ Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-commentary'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'ap/vim-buftabline'
+Plug '~/.vim/plugged/comvimed'
+Plug 'jiangmiao/auto-pairs'
+Plug 'Raimondi/delimitMate'
+Plug 'bling/vim-bufferline'
+Plug 'lervag/vimtex'
+Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 call plug#end()
+
 
 " Settings for Vim-Airline
 
@@ -128,17 +158,28 @@ let g:tokyonight_style = 'night' " available: night, storm
 let g:tokyonight_enable_italic = 0
 " let g:airline_theme = 'catppuccin_mocha'
 colorscheme tokyonight
+" Define a command to compile and run Rust code
+command! RunRust !cargo run
 
-let g:startify_custom_header = [
-      \ '   ⣴⣶⣤⡤⠦⣤⣀⣤⠆     ⣈⣭⣿⣶⣿⣦⣼⣆         ',
-      \ '    ⠉⠻⢿⣿⠿⣿⣿⣶⣦⠤⠄⡠⢾⣿⣿⡿⠋⠉⠉⠻⣿⣿⡛⣦       ',
-      \ '          ⠈⢿⣿⣟⠦ ⣾⣿⣿⣷    ⠻⠿⢿⣿⣧⣄     ',
-      \ '           ⣸⣿⣿⢧ ⢻⠻⣿⣿⣷⣄⣀⠄⠢⣀⡀⠈⠙⠿⠄    ',
-      \ '          ⢠⣿⣿⣿⠈    ⣻⣿⣿⣿⣿⣿⣿⣿⣛⣳⣤⣀⣀   ',
-      \ '   ⢠⣧⣶⣥⡤⢄ ⣸⣿⣿⠘  ⢀⣴⣿⣿⡿⠛⣿⣿⣧⠈⢿⠿⠟⠛⠻⠿⠄  ',
-      \ '  ⣰⣿⣿⠛⠻⣿⣿⡦⢹⣿⣷   ⢊⣿⣿⡏  ⢸⣿⣿⡇ ⢀⣠⣄⣾⠄   ',
-      \ ' ⣠⣿⠿⠛ ⢀⣿⣿⣷⠘⢿⣿⣦⡀ ⢸⢿⣿⣿⣄ ⣸⣿⣿⡇⣪⣿⡿⠿⣿⣷⡄  ',
-      \ ' ⠙⠃   ⣼⣿⡟  ⠈⠻⣿⣿⣦⣌⡇⠻⣿⣿⣷⣿⣿⣿ ⣿⣿⡇ ⠛⠻⢷⣄ ',
-      \ '      ⢻⣿⣿⣄   ⠈⠻⣿⣿⣿⣷⣿⣿⣿⣿⣿⡟ ⠫⢿⣿⡆     ',
-      \ '       ⠻⣿⣿⣿⣿⣶⣶⣾⣿⣿⣿⣿⣿⣿⣿⣿⡟⢀⣀⣤⣾⡿⠃     ',
-      \]
+" Map <F5> to compile and run Rust code
+nnoremap <F5> :RunRust<CR>
+
+" Automatically set up the keybinding for Rust files
+augroup RustRun
+    autocmd!
+    autocmd FileType rust nnoremap <buffer> <F5> :RunRust<CR>
+augroup END
+
+" Force-transparent signcolumn (works in most terminals)
+" highlight clear SignColumn
+"
+" highlight SignColumn ctermbg=NONE 
+" highlight SignColumn ctermfg=NONE
+" highlight SignColumn guibg=NONE
+" highlight SignColumn guifg=NONE
+
+" For Neovim: Also patch the EndOfBuffer region (tilde lines)
+" if has('nvim')
+  " highlight! link SignColumn LineNr  " Match line number colors
+  " highlight! EndOfBuffer ctermbg=NONE guibg=NONE
+" endif  
