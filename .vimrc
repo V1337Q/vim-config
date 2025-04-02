@@ -4,6 +4,7 @@ source ~/.vim/keymaps.vim
 source ~/.vim/startify.vim
 source ~/.vim/vimtex.vim 
 set number
+set cursorline
 set relativenumber  
 let mapleader = " "
 " set fillchars+=vert:\
@@ -31,7 +32,7 @@ nnoremap <C-u> <C-u>zz
 nnoremap <leader>y "+y
 vnoremap J gj
 vnoremap K gk
-
+" = Fast Scrolling =  
 " Easy shits
 " inoremap ( ()<Left>
 " inoremap [ []<Left>
@@ -127,6 +128,7 @@ let g:buftabline_arrow = '▶'
 " Plugins (Statusline, Theme, motion)
 call plug#begin()
 Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'ghifarit53/tokyonight-vim'
 Plug 'mhinz/vim-startify'
 " Plug 'catppuccin/vim'
@@ -143,7 +145,7 @@ Plug 'ap/vim-buftabline'
 Plug '~/.vim/plugged/comvimed'
 Plug 'jiangmiao/auto-pairs'
 Plug 'Raimondi/delimitMate'
-Plug 'bling/vim-bufferline'
+" Plug 'bling/vim-bufferline'
 Plug 'lervag/vimtex'
 Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 call plug#end()
@@ -158,28 +160,60 @@ let g:tokyonight_style = 'night' " available: night, storm
 let g:tokyonight_enable_italic = 0
 " let g:airline_theme = 'catppuccin_mocha'
 colorscheme tokyonight
-" Define a command to compile and run Rust code
+highlight CursorLineSign guifg=#7aa2f7 ctermfg=81    
 command! RunRust !cargo run
 
 " Map <F5> to compile and run Rust code
 nnoremap <F5> :RunRust<CR>
 
-" Automatically set up the keybinding for Rust files
 augroup RustRun
     autocmd!
     autocmd FileType rust nnoremap <buffer> <F5> :RunRust<CR>
 augroup END
 
-" Force-transparent signcolumn (works in most terminals)
-" highlight clear SignColumn
-"
-" highlight SignColumn ctermbg=NONE 
-" highlight SignColumn ctermfg=NONE
-" highlight SignColumn guibg=NONE
-" highlight SignColumn guifg=NONE
+let g:airline_mode_map = {
+      \ 'n' : 'N',
+      \ 'i' : 'I',
+      \ 'R' : 'R',
+      \ 'v' : 'V',
+      \ 'V' : 'VL',
+      \ "\<C-v>" : 'VB',
+      \ 'c' : 'C',
+      \ 's' : 'S',
+      \ 'S' : 'SL',
+      \ "\<C-s>" : 'SB',
+      \ 't': 'T',
+      \}
 
-" For Neovim: Also patch the EndOfBuffer region (tilde lines)
-" if has('nvim')
-  " highlight! link SignColumn LineNr  " Match line number colors
-  " highlight! EndOfBuffer ctermbg=NONE guibg=NONE
-" endif  
+"  \ ' %3p%%',
+" let g:bufferline_separator = ' ▏'  
+" let g:airline_section_z = ''
+" let g:airline_section_z = airline#section#create([
+"   \ '%{&filetype}',
+"   \ ' %l|%L | %c|%C',
+"   \ ' %3p%%',
+"   \ ' %{airline#extensions#coc#get_status()}',
+"   \ ' %{get(g:, "coc_git_status", "")}',
+" \ ])
+function! MaxColumn()
+  return virtcol('$')
+endfunction
+  " \ ' %{substitute(airline#extensions#coc#get_status(), "[✗✓➜]", "", "g")}',  
+
+  " \ '%{&filetype}',
+  " \ ' %3p%%',
+  " \ ' %{airline#extensions#coc#get_status()}',
+let g:airline_section_z = airline#section#create([
+  \ ' %l|%L | %c|%{MaxColumn()}',
+  \ ' %{get(g:, "coc_git_status", "")}',
+\ ])
+
+function! AirlineBuffers()
+  let buffers = []
+  for nr in filter(range(1, bufnr('$')), 'buflisted(v:val)')
+    call add(buffers, fnamemodify(bufname(nr), ':t'))
+  endfor
+  return join(buffers, ' | ')
+endfunction
+
+let g:airline_section_c = '%{AirlineBuffers()}'
