@@ -38,26 +38,43 @@ cd .vim ; mv *.vim ~/.vim
 
 - Re-enter vim
  
+## List of plugins used:  
+```
+- vim-airline for StatusLine alongside vim-airline-theme.
+- vim-startify by mhinz for start page.
+- vim-easymotions for navigation. 
+- NERDtree for file tree. 
+- fzf for fuzzy finder. 
+- vim-commentary 
+- coc.vim for LSP, auto suggestions, many more. 
+- auto-pairs by jiangmiao
+- delimitMate by Raimondi
+- vimtex for LaTex integration.
+- vim-deviocons for nerd font integration. 
+```
+
 
 ## Features:
 - Status line plugin
 
-# Vim-Airline & buftabline
+# Custom startify start page and vim-devicons for NERDtree
 
 ![Alt text](./images/Preview1.png)
 
 - Custom keymaps (Will update daily for easy navigation)
 - Dashboard/Start screen
 
-# Startify
+# coc.vim
 
 ![Alt text](./images/Preview4.png)
 
 - LSP support.
 
-# coc.vim
+# clean statusline with vim-airline
 
 ![Alt text](./images/Preview2.png)
+
+# Custom buffer clean display plugin integration for vim-airline 
 
 ![Alt text](./images/Preview3.png)
 
