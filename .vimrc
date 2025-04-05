@@ -1,11 +1,13 @@
 " Start of Config
-" Config by Kai_Je0
 source ~/.vim/keymaps.vim
 source ~/.vim/startify.vim
 source ~/.vim/vimtex.vim 
 set number
 set cursorline
 set relativenumber  
+set virtualedit=onemore  
+set autoindent
+set clipboard=unnamedplus
 let mapleader = " "
 " set fillchars+=vert:\
 " set fillchars+=horiz:\
@@ -105,7 +107,7 @@ let g:coc_global_extensions = ['coc-rust-analyzer']
 
 " Options for vim-airline 
 " let g:airline_section_x = ''  " Disable the z section
-" let g:airline_section_y = ''  " Disable the z section
+let g:airline_section_y = ''  " Disable the z section
 " let g:airline_section_z = ''  " Disable the z section
 " let g:airline#extensions#default#section_truncate_width = {}
 let g:airline#extensions#whitespace#enabled = 0
@@ -148,6 +150,7 @@ Plug 'Raimondi/delimitMate'
 " Plug 'bling/vim-bufferline'
 Plug 'lervag/vimtex'
 Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
+Plug 'ryanoasis/vim-devicons'
 call plug#end()
 
 
@@ -170,6 +173,8 @@ augroup RustRun
     autocmd!
     autocmd FileType rust nnoremap <buffer> <F5> :RunRust<CR>
 augroup END
+
+      " \ 'n' : '󰊠',
 
 let g:airline_mode_map = {
       \ 'n' : 'N',
@@ -208,12 +213,13 @@ let g:airline_section_z = airline#section#create([
   \ ' %{get(g:, "coc_git_status", "")}',
 \ ])
 
-function! AirlineBuffers()
-  let buffers = []
-  for nr in filter(range(1, bufnr('$')), 'buflisted(v:val)')
-    call add(buffers, fnamemodify(bufname(nr), ':t'))
-  endfor
-  return join(buffers, ' | ')
-endfunction
+" function! AirlineBuffers()
+"   let buffers = []
+"   for nr in filter(range(1, bufnr('$')), 'buflisted(v:val)')
+"     call add(buffers, fnamemodify(bufname(nr), ':t'))
+"   endfor
+"   return join(buffers, ' | ')
+" endfunction
 
-let g:airline_section_c = '%{AirlineBuffers()}'
+" let g:airline_section_c = '%{AirlineBuffers()}'
+set runtimepath+=~/.vim/plugged/buffereze
