@@ -57,24 +57,24 @@ cd .vim ; mv *.vim ~/.vim
 ## Features:
 - Status line plugin
 
-# Custom startify start page and vim-devicons for NERDtree
+## Custom startify start page and vim-devicons for NERDtree
 
 ![Alt text](./images/Preview1.png)
 
 - Custom keymaps (Will update daily for easy navigation)
 - Dashboard/Start screen
 
-# coc.vim
+## coc.vim
 
 ![Alt text](./images/Preview4.png)
 
 - LSP support.
 
-# clean statusline with vim-airline
+## clean statusline with vim-airline
 
 ![Alt text](./images/Preview2.png)
 
-# Custom buffer clean display plugin integration for vim-airline 
+## Custom buffer clean display plugin integration for vim-airline 
 
 ![Alt text](./images/Preview3.png)
 
