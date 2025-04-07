@@ -31,7 +31,9 @@ nnoremap <C-o> o<Esc>k<CR>gv
 nnoremap <Leader>h :TerminalSplit bash<CR>
 nnoremap <C-d> <C-d>zz
 nnoremap <C-u> <C-u>zz
-nnoremap <leader>y "+y
+" nnoremap <leader>y "+y
+nnoremap y "+y
+nnoremap p "+p
 vnoremap J gj
 vnoremap K gk
 " = Fast Scrolling =  
