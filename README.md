@@ -4,18 +4,18 @@
 
 - Install Vim-plug
 
-```bash 
+```sh 
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 ```
 - put the .vimrc file to your home directory, if don't exist. 
 
-```bash
+```sh
 mv .vimrc ~/ 
 ```
 - Put the vim files inside .vim into your .vim directory 
 
-```bash
+```sh
 cd .vim ; mv *.vim ~/.vim 
 ```
 - Enter Vim
