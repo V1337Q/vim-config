@@ -4,35 +4,35 @@
 
 - Install Vim-plug
 
-``` 
+```bash 
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 ```
 - put the .vimrc file to your home directory, if don't exist. 
 
-```
+```bash
 mv .vimrc ~/ 
 ```
 - Put the vim files inside .vim into your .vim directory 
 
-```
+```bash
 cd .vim ; mv *.vim ~/.vim 
 ```
 - Enter Vim
 
 - Run the following command inside vim
 
-```
+```vim
 :PlugInstall
 ```
 - Source the vimscript
-```
+```vim
 :source .vimscript
 ```
 
 - Exit vim
 
-```
+```vim
 :q
 ```
 
